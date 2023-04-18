@@ -1,45 +1,123 @@
-# ZoomCare Candidate Code Challenge - QA / Automation
+# Part 1__ Test Cases <br>
 
-![ZoomCare Logo](https://avatars0.githubusercontent.com/u/48925141?s=150)
+## Feature: Schedule (a Visit) <br>
+ <br>
 
-Welcome to the ZoomCare QA / Automation Candidate Code Challenge. If you are here you most likely have interest in joining the ZoomCare Quality Engineering Team and have been asked to respond to this challenge. If you came here on your own, you are welcome to explore the challenge and use it to sharpen your skills or prepare for future interviews.
+### Scenario 1: Verify that "User" can navigate to "schedulePage" from the "homePage" <br>
+**Given**: "User" is on the "homePage" of zoomcare.com <br>
+**When**: "User" clicks on "Schedule" header   (// can add or replace with a "Schedule a Visit" button) <br>
+**Then**: the "schedulePage" should load successfully <br>
+**And**: the "schedulePage" should contain all necessary elements <location\>, <appointment type\>, <date\> <br>
 
-The ZoomCare Candidate Code Challenges are intended to take around 2-3 hours to complete. This is not intended to be an extensive test of your programing skills or knowledge, but rather as a starting point for further conversations during the application process.
+**Acceptance Criteria:** <br>
+1. The "Schedule" header should be visible and clickable on the homePage. <br>
+2. The "Schedule a Visit" button should be visible and clickable on the homePage. <br>
+3. Clicking on the "Schedule" header or "Schedule a Visit" button should take the user to the schedulePage within 'XX' seconds.<br>
+4. The schedulePage should contain a <location\> field, which allows the user to select a zoomcare location from a drop-down list of available locations.<br>
+5. The schedulePage should contain an <appointment type\> field, which allows the user to select an appointment type from a drop-down list of available appointment types.<br> 
+6. The schedulePage should contain a <date\> field, which allows the user to select an available date from a calendar or date picker.<br>
+7. The schedulePage should display error messages if the user makes invalid selections or if any required fields are left blank.<br>
+8. The schedule Page should provide visit scheduling details, including clinic info, provider info, and next availability info etc.<br>
+9. The schedulePage should be accessible and meet the WCAG 2.1 A/AA accessibility guidelines. <br>
+10. The schedulePage all buttons, fields, and links should be functional and respond to user interactions. <br>
 
-## Instructions
+### Scenario 2: Verify that "User" can schedule a "Clinical Care" visit with an valid appointment info
+**Given**: "User" is on the "schedulePage" <br>
+**When**: "User" selects valid appointment information <br>
+**And**: "User" should see provider availability under "Clinical Care" <br>
+**Then** "User" should be able to schedule the "Clinical Care" visit <br>
 
-This Candidate Code Challenge is geared specifically toward QA Engineers with end-to-end testing and programming experience. The challenge is split into two parts: the first is to devise a test plan for the prompt provided, while the second is to create a basic automation framework that executes some of the test cases written. Both parts are of equal importance, but you'll likely spend more time on Part 2 (automation).
+**Acceptance Criteria:** <br>
+1. The elements should be visible and clickable on the "schedulePage" (location, type, date, btnRefresh etc). <br>
+2. The user should be able to select a valid location, appointment type, and date for the visit. <br>
+3. Once the user has made a valid selection, the schedulePage should display the available appointment provider and times for the selected location and appointment type. <br>
+4. The schedulePage should show the availability of all providers who can offer the selected appointment type at the selected location on the selected date. <br>
+5. The provider available time slot should be accurate and up-to-date, reflecting any changes or cancellations in real-time. <br>
+6. The user can click "More" to see all available time slots. <br>
 
-Specifically:
-1. Create a fork of this repository into your personal GitHub space.
-2. Wipe the contents of this README file, and in its place, create two sections: Test Cases and Automation Instructions.
-3. Use the Test Cases section in the README file to write all of your test cases in response to the first part.
-4. Set up an automation framework and its associated pages/specs/utilities/etc within the repository.
-5. Use the Automation Instructions section in the README to provide instructions for how to set up the framework. Assume the user has nothing pre-installed and also does not know how to use the framework you chose.
-7. Create a Pull Request back to the original project.
+### Scenario 3: Verify that "User" can schedule a "VideoCare" visit with an valid appointment info
+**Given**: "User" is on the "schedulePage" <br>
+**When**: "User" selects valid appointment information <br>
+**And**: "User" should see provider availability under "VideoCare" <br>
+**Then** "User" should be able to schedule the "VideoCare" visit <br>
 
-## Prompt
+**Acceptance Criteria:** <br>
+1. The elements should be visible and clickable on the "schedulePage" (location, type, date, btnRefresh etc). <br>
+2. The user should be able to select a valid location, appointment type, and date for the visit. <br>
+3. Once the user has made a valid selection, the schedulePage should display the available appointment provider and times for the selected location and appointment type. <br>
+4. The schedulePage should show the availability of all providers who can offer the selected appointment type at the selected location on the selected date. <br>
+5. The provider available time slot should be accurate and up-to-date, reflecting any changes or cancellations in real-time. <br>
+6. The user can click "More" to see all available time slots. <br>
 
-ZoomCare has a unique promise: we make healthcare delightful by giving it to you on your terms. No matter where or when you want care, ZoomCare can provide complete care for all that ails them, in the palm of their hand. The most critical way we deliver on that promise is through our online scheduling system, which is completely self-service by our patients and coordinates the vast majority of appointments we serve. We call this the "Search/Sechedule Moment". Simply visit our public website at https://www.zoomcare.com, and you'll immediately be greeted with a scheduler to get you on your way.
+### Scenario 4: Verify that "User" can modify appointment info
+**Given**: "User" is on the "schedulePage" <br>
+**When**: "User" selects valid appointment information <br>
+**And**: "User" should see providers availability <br>
+**Then**: "User" modify appointmnet info
+**Then** "User" should be able to see the new schedule for the new visit <br>
 
-### Part 1
+**Acceptance Criteria:** <br>
+1. The user should be able to modify selected visit info. <br>
 
-Devise a set of test scenarios / acceptance criteria that covers enough breadth of this feature for a daily smoke test.
+### Scenario 5: Verify that "User" canNOT schedule a visit with an invalid appointment info
+**Given**: "User" is on the "schedulePage" <br>
+**When**: "User" selects invalid appointment information <br>
+**Then**: "User" should not be able to schedule the visit <br>
 
-A few asks and helpful tips:
-- Keep your focus to just the scheduling page (https://www.zoomcare.com/schedule). Anything else is not within scope of this challenge.
-- If you click on a time slot, it will redirect you to a login screen if you don't have an account. We aren't concerned with the behavior past this point; focus on the behavior that displays to an unauthenticated guest just browsing our schedule. You can make an account if you wish, but these are real appointments - **please do not actually schedule any appointments for testing**.
-- We know there are many, many links on our website. Be selective in which links you want to verify work, and what page they should open up under what condition.
-- Prioritize your plan; try to keep your list to 8-10 test cases.
-- We're interested in testing the application's front-end user interface, from an end-to-end perspective. Thinking about what the back-end (ie. API endpoint) does is useful, but is not a requirement for this challenge.
-- Think about the entire workflow: what happens if you change X parameter? Does Y also change depending on X? What about things changing without any interaction after a period of time?
+**Acceptance Criteria:** <br>
+1. The user should see error message for location error "We are unable to retrieve your location."  <br>
+2. The user should only be able to select visit times in today or future (// side note: looks like it only display two month for now)
+3. Once the user has made a valid selection, the schedulePage should display the available appointment provider and times for the selected location and appointment type. <br>
 
-### Part 2
+### Scenario 6 Verify that "User" canNOT schedule a visit without entering required info
+**Given**: "User" is on the "schedulePage" <br>
+**When**: "User" selects invalid appointment information <br>
+**Then**: "User" should not be able to schedule the visit <br>
 
-Take at least three cases that you've written in Part 1, and propose how they would transfer into an automated test by coding/scripting them with a framework and/or tool. Use whatever you're comfortable with (Selenium, Cypress, etc.), and you can write in any programming/scripting language you choose.
+**Acceptance Criteria:** <br>
+1. The user should see error message for location error "We are unable to retrieve your location."  <br>
+2. The user should only be able to select visit times in today or future (// side note: looks like it only display two month for now)
+3. Once the user has made a valid selection, the schedulePage should display the available appointment provider and times for the selected location and appointment type. <br>
 
-What we're looking for:
-- Verifying you can write code and/or script well (knowledge of built-in functions for your chosen language, good organization of classes/functions, reasonable use of comments, etc.)
-- You have a clear vision for how to automate (using POM or Screenplay methodology, BDD or TDD best practices, etc.)
-- You know how to get the results you need (knowledge of the framework(s) and libraries chosen, and using their functionality appropriately)
-- Working code is good. Pretty working code is better. Fast, pretty, working code is best.
+### Scenario 7: Verify that "User" can see Health Insurance Acceptance and cost info
+**Given**: "User" see provider list after selecting vist info <br>
+**When**: "User" clicks on the "Info | $" icon <br>
+**Then**: "User" can see Health Insurance Acceptance and cost info <br>
+
+**Acceptance Criteria:** <br>
+1. User should see Health Insurance Acceptance and cost info after click "Info | $" icon <br>
+
+### Scenario 8: Verify that "User" can view clinic services list
+**Given**: "User" see provider list after selecting vist info <br>
+**When**: "User" clicks on the "View Clinic Services" link <br>
+**Then**: "User" can see services provided by this clinic <br>
+
+**Acceptance Criteria:** <br>
+1. User should see Health Insurance Acceptance and cost info after click "Info | $" icon <br>
+
+### Scenario 9: Verify that "User" can view clinic location from GoogleMap
+**Given**: "User" see provider list after selecting vist info <br>
+**When**: "User" clicks on the "Map" icon <br>
+**And**: "User" navigated to GoogleMap <br>
+**Then** "User"can see services provided address in GoogleMap <br>
+
+### Scenario 10: Verify that "User" can view clinic location from GoogleMap
+**Given**: "User" see provider list after selecting vist info <br>
+**When**: "User" clicks on the "Map" icon <br>
+**And**: "User" navigated to GoogleMap <br>
+**Then** "User"can see services provided address in GoogleMap <br>
+
+### Scenario 11: Verify system timeout after user inactivity
+**Given**: system timeout after "User" not interacted in the "Schedule Page" for "20" minutes <br>
+**When**: "User" perform any operation after system timeout <br>
+**Then**: "User" should refresh web page <br>
+**Then** "User" can interact with system again <br>
+
+**Acceptance Criteria:** <br>
+1. System should timeout after 'XX' minutes of user inactivity <br>
+ <br>
+ <br>
+ <br>
+
+
+# Part 2__Automation Instructions
